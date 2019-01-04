@@ -2,11 +2,12 @@ const express = require('express');
 const mysql = require('mysql');
 
 // Create connection
+
 const db = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : '123456',
-    database : 'nodemysql'
+    password : 'root',
+    port: '8889'
 });
 
 // Connect
@@ -30,6 +31,7 @@ app.get('/createdb', (req, res) => {
 });
 
 // Create table
+
 app.get('/createpoststable', (req, res) => {
     let sql = 'CREATE TABLE posts(id int AUTO_INCREMENT, title VARCHAR(255), body VARCHAR(255), PRIMARY KEY(id))';
     db.query(sql, (err, result) => {
